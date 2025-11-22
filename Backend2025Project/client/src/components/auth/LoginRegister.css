@@ -1,0 +1,86 @@
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Centers the book vertically */
+  padding: 2rem;
+}
+
+/* This is the container that enables the 3D effect */
+.book-container {
+  width: 400px;
+  height: 550px;
+  perspective: 1500px; /* How far the "camera" is from the 3D object */
+}
+
+/* The actual book element that will be flipped */
+.book {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* CRITICAL: This enables 3D positioning for children */
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* This class is added by React to trigger the flip */
+.book-container.flipped .book {
+  transform: rotateY(180deg);
+}
+
+/* Both sides of the book */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* CRITICAL: Hides the side facing away from you */
+  /* background: rgb(111,77,56); */
+  background: #70503d;
+background: linear-gradient(90deg, rgba(112, 80, 61, 1) 0%, rgba(213, 184, 147, 1) 100%);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The back side starts off pre-rotated */
+.back {
+  transform: rotateY(180deg);
+  background: #D5B893;
+background: linear-gradient(90deg, rgba(213, 184, 147, 1) 2%, rgba(99, 32, 36, 1) 100%);
+}
+
+.form-content {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.form-content h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: var(--dark-color);
+}
+
+.form-content input[type='text'],
+.form-content input[type='email'],
+.form-content input[type='password'],
+.form-content select {
+  margin-bottom: 1.2rem;
+}
+
+/* The button that triggers the flip */
+.flip-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 5px;
+  font-size: 0.9rem;
+}
+
+.flip-button:hover {
+  text-decoration: underline;
+}

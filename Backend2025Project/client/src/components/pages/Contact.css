@@ -1,0 +1,115 @@
+/* Keyframe animation for content fading in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main container */
+.contact-container {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
+  overflow-x: hidden; /* Prevents horizontal scrollbars during animation */
+}
+
+/* Header section */
+.contact-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+.contact-header h1 {
+  font-size: 3rem;
+  color: var(--dark-color);
+}
+.contact-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* "Meet the Team" section title */
+.team-section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--dark-color);
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.2s; /* Appears after the header */
+}
+
+/* Container for a single team member row */
+.team-member-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Staggering the animation for each row */
+.team-member-row:nth-of-type(1) { animation-delay: 0.4s; }
+.team-member-row:nth-of-type(2) { animation-delay: 0.6s; }
+.team-member-row:nth-of-type(3) { animation-delay: 0.8s; }
+.team-member-row:nth-of-type(4) { animation-delay: 1s; }
+
+
+/* Alternating layout for every odd-numbered row */
+.team-member-row:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+/* Team member image styles */
+.team-member-image {
+  flex-shrink: 0;
+}
+.team-member-image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Team member info styles */
+.team-member-info {
+  text-align: left;
+}
+.team-member-info h3 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0;
+}
+.team-member-info .role {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.team-member-info p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .team-member-row,
+  .team-member-row:nth-child(odd) {
+    flex-direction: column;
+    text-align: center;
+  }
+  .team-member-info {
+    text-align: center;
+  }
+  .team-member-image img {
+    width: 200px;
+    height: 200px;
+  }
+}

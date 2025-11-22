@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Define colors based on your image */
+  --primary-bg-light: #f8f8fa;
+  --primary-bg-dark: #30407a;
+  --accent-pink: #d93b6f;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --input-border: #dddddd;
+  --switch-bg-off: #cccccc;
+  --switch-bg-on: var(--accent-pink);
+  --deco-circle-color: rgba(255, 255, 255, 0.1); /* For dots/sparkles */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg-light); /* Overall page background */
+}
+
+.login-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Important for the clip-path and contained design */
+  position: relative;
+}
+
+/* --- Left Panel (Form Section) --- */
+.left-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; /* White background for the form area */
+  padding: 2rem;
+  
+  /* The main wavy shape on the left */
+  /* This polygon creates the specific cutout seen in the image */
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  z-index: 10; /* Higher z-index to overlap the right panel */
+}
+
+.left-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0e6f2, #e0d0e6); /* Subtle gradient like the original image */
+    z-index: -1; /* Behind the content */
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%); /* Same shape */
+}
+
+
+.content-wrapper {
+  max-width: 450px; /* Adjust based on desired width of your content */
+  width: 100%;
+  padding-right: 4rem; /* To give space due to the clip-path cutting into it */
+}
+
+.content-wrapper h1 {
+  font-size: 2.8rem; /* Adjust font size to match */
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+}
+
+/* Input Groups */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 10px; /* Slightly rounded corners */
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input::placeholder {
+  color: #a0a0a0;
+}
+
+.input-group input:focus {
+  border-color: var(--accent-pink);
+}
+
+/* Password Group specific styles for the toggle */
+.password-group {
+  display: flex; /* To align input and switch */
+  align-items: center;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--accent-pink);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem; /* Space below password input */
+}
+
+.login-button:hover {
+  background-color: #c03463; /* Slightly darker pink on hover */
+}
+
+/* Register Text */
+.register-text {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.register-text a {
+  color: var(--accent-pink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
+
+.info-links {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.info-links a {
+  color: var(--accent-pink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Right Panel (Illustration Section) --- */
+.right-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4a69bd, #6a89cc); /* Gradient from image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Behind the left panel's content */
+  
+  /* Decorative circles/sparkles via radial gradients */
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,0.1) 1px, transparent 0),
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,0.15) 2px, transparent 0),
+    radial-gradient(circle at 20% 75%, rgba(255,255,255,0.1) 2px, transparent 0),
+    radial-gradient(circle at 60% 80%, rgba(255,255,255,0.15) 1px, transparent 0);
+  background-size: 400px 400px; /* Adjust as needed for density */
+}
+
+.main-illustration {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3; /* Make sure illustration is above background decorations */
+  position: relative;
+}
+
+/* Decorative circles (the larger ones) in the background of both panels */
+/* These use absolute positioning and can be placed manually */
+.deco-circle {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 0; /* Behind other content */
+}
+
+.circle-1 { /* Large pink circle top-left */
+  width: 150px;
+  height: 150px;
+  background-color: var(--accent-pink);
+  opacity: 0.1;
+  top: -75px;
+  left: -75px;
+}
+
+.circle-2 { /* Smaller circle below title */
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-pink);
+  opacity: 0.15;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.circle-3 { /* Ring at top right of left panel */
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 5px solid var(--accent-pink);
+    opacity: 0.15;
+    top: 50px; /* Adjust position */
+    left: 70%; /* Adjust position */
+}
+.circle-4 { /* Another smaller ring on the right */
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 4px solid var(--accent-pink);
+    opacity: 0.1;
+    top: 60%; /* Adjust position */
+    left: 80%; /* Adjust position */
+}
+
+
+/* --- Toggle Switch Styles (reused from previous example) --- */
+.switch {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--switch-bg-off);
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--switch-bg-on);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

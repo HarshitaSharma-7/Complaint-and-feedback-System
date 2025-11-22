@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Define colors based on your image */
+  --primary-pink: #d93b6f; /* Main pink background */
+  --accent-dark-pink: #c03463; /* Darker pink for hover/details */
+  --form-bg: #f8f8fa; /* Light background for the form area */
+  --text-dark: #333333;
+  --text-medium: #666666;
+  --input-border: #dddddd;
+  --input-text: #888888;
+  --link-blue: #6d93e1; /* For terms and conditions link */
+  --dropdown-shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--form-bg); /* Overall page background */
+}
+
+.registration-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.illustration-wrapper-reg {
+  
+  width:50vw; /* Adjust size */
+  height:100vh;
+}
+
+.main-illustration-reg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.welcome-text-reg h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-text-reg p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Decorative elements on the left panel */
+.deco-circle-reg, .deco-square-reg {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  border-radius: 50%; /* Default to circle */
+  z-index: 0; /* Behind illustration and text */
+}
+
+.deco-circle-reg-1 {
+  width: 120px;
+  height: 120px;
+  top: 5%;
+  left: 10%;
+}
+.deco-circle-reg-2 {
+  width: 70px;
+  height: 70px;
+  top: 30%;
+  right: 5%;
+}
+.deco-circle-reg-3 {
+  width: 180px;
+  height: 180px;
+  bottom: -90px;
+  left: -90px;
+}
+.deco-circle-reg-4 {
+  width: 40px;
+  height: 40px;
+  bottom: 20%;
+  right: 15%;
+}
+.deco-square-reg {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px; /* Make it a square with rounded corners */
+  bottom: 8%;
+  left: 25%;
+  transform: rotate(20deg);
+}
+
+
+/* --- Right Panel (Registration Form) --- */
+.right-panel-reg {
+  flex: 1;
+  background-color: var(--form-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 2; /* To be above the left panel if overlapping */
+}
+
+.form-container-reg {
+  max-width: 450px;
+  width: 100%;
+  padding: 2.5rem 1.5rem; /* Vertical and horizontal padding */
+  background-color: white; /* White box for the form */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.form-container-reg h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.input-label-reg {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.input-group-reg {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.input-icon-reg {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--input-text);
+  font-size: 1rem;
+}
+
+.input-group-reg input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3.5rem; /* Space for icon */
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-group-reg input::placeholder {
+  color: var(--input-text);
+}
+
+.input-group-reg input:focus {
+  border-color: var(--accent-dark-pink);
+}
+
+/* Custom Dropdown Styling */
+.dropdown-container {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.custom-select {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1rem 1rem 3.5rem; /* Space for icon */
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--input-text);
+  cursor: pointer;
+  background-color: white;
+  position: relative;
+}
+
+.custom-select span {
+  flex-grow: 1; /* Pushes arrow to the right */
+  color: var(--text-dark); /* Color for selected text */
+}
+
+.dropdown-arrow {
+  margin-left: 10px;
+  color: var(--input-text);
+  transition: transform 0.2s ease;
+}
+
+.custom-select.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 100%; /* Below the custom-select */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid var(--input-border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 8px 16px var(--dropdown-shadow);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dropdown-options div {
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-options div:hover {
+  background-color: var(--form-bg);
+}
+
+/* Terms and Conditions Checkbox */
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-right: 0.8rem;
+  /* Basic styling for custom checkbox appearance */
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-pink); /* Colors the checkbox itself */
+}
+
+.terms-checkbox a {
+  color: var(--link-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+/* Register Button */
+.register-button {
+  width: 100%;
+  padding: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary-pink);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.register-button:hover {
+  background-color: var(--accent-dark-pink);
+}
+
+/* Login Link */
+.login-link-reg {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+  color: var(--text-medium);
+}
+
+.login-link-reg a {
+  color: var(--primary-pink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link-reg a:hover {
+  text-decoration: underline;
+}

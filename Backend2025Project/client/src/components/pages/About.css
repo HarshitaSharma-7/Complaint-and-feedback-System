@@ -1,0 +1,82 @@
+/* Keyframe animation for the fade-in and slide-up effect */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main container for the About page */
+.about-container {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
+  overflow: hidden; /* Ensures animations don't overflow their container */
+}
+
+/* Header section with the main title */
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  /* Apply animation to the header */
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.about-header h1 {
+  font-size: 3rem;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Container for the feature cards */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Individual feature card styling */
+.feature-card {
+  background: #D5B893;
+background: radial-gradient(circle, rgba(213, 184, 147, 1) 2%, rgba(99, 32, 36, 1) 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  opacity: 0; /* Start hidden */
+  transform: translateY(40px); /* Start slightly lower */
+  /* Apply animation to each card */
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggering the animation for each card */
+.feature-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.feature-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.feature-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.feature-card .icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
